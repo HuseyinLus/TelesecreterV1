@@ -13,3 +13,7 @@ class DepartmentModel(BaseModel):
     __table_args__ = (
         UniqueConstraint("name", name="uq_department_name"),
     )
+
+    @property
+    def doctor_ids(self) -> list[str]:
+        return [doctor.id for doctor in self.doctors]
