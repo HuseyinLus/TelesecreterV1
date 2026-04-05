@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Boolean, Float
+from sqlalchemy import Column, ForeignKey, String, Boolean, Float
 from sqlalchemy.orm import relationship
 from Telesecreter_Infrastructure.data_access.configurations.common.base_model import BaseModel
 
@@ -9,6 +9,7 @@ class DoctorModel(BaseModel):
     full_name    = Column(String, nullable=False)
     email        = Column(String, unique=True, nullable=False)
     phone_number = Column(String, nullable=True, default="")
+    department_id = Column(String, ForeignKey("departments.id"), nullable=False)
     specialty    = Column(String, nullable=False)
     is_available = Column(Boolean, default=True, nullable=False)
     rating       = Column(Float, nullable=True, default=None)
