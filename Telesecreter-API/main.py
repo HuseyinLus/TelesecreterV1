@@ -14,7 +14,7 @@ app = FastAPI(
 )
 
 # Connect all routers
-app.include_router(user_controller.router)
+#app.include_router(user_controller.router)
 
 @app.get("/")
 async def root():
