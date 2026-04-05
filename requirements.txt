@@ -1,0 +1,20 @@
+fastapi
+uvicorn[standard]
+python-multipart
+pydantic>=2
+SQLAlchemy>=2
+alembic
+python-dotenv
+twilio
+httpx
+# v2 için (kendi STT/TTS)
+faster-whisper
+coqpit
+# TTS (Temporarily disabled - requires Python < 3.12)
+# soundfile
+# numpy
+# torch
+# transformers
+# kokoro
+# soundfile
+fastapi

@@ -1,0 +1,49 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environment
+venv1/
+.venv/a
+venv/
+ENV/
+env/
+*.env
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# VSCode / PyCharm
+.vscode/
+.idea/
+
+# Logs
+*.log
+logs/
+*.out
+*.err
+
+# Data
+model/data/
+*.csv
+*.tsv
+*.json
+
+# Model checkpoints
+model/checkpoints/
+*.bin
+*.pt
+*.ckpt
+*.h5
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build / distribution
+build/
+dist/
+*.egg-info/
