@@ -5,7 +5,7 @@ from fastapi import FastAPI
 # Ensure the backend directory is in the Python path so it can import Telesecretary namespace properly
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from routers import user_controller
+from Telesecreter_API.routers import user_controller
 
 app = FastAPI(
     title="Telesecretary API",

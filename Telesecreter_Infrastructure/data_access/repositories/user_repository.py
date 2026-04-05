@@ -1,6 +1,6 @@
 from typing import Optional
 from uuid import UUID
-from Telesecreter_Domain.interfaces.i_scheduale_repository import IUserRepository
+from Telesecreter_Domain.interfaces.i_user_repository import IUserRepository
 from Telesecreter_Domain.entities.user import User
 from Telesecreter_Domain.enums.user_role import UserRole
 from Telesecreter_Infrastructure.data_access.configurations.models.user_model import UserModel

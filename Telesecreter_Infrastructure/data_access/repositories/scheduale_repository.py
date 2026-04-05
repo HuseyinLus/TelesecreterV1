@@ -1,5 +1,5 @@
 from uuid import UUID
-from Telesecreter_Domain.interfaces.i_schedule_repository import IScheduleRepository
+from Telesecreter_Domain.interfaces.i_scheduale_repository import IScheduleRepository
 from Telesecreter_Domain.entities.scheduale import DoctorSchedule
 from Telesecreter_Infrastructure.data_access.configurations.models.schedual_model import DoctorScheduleModel
 from Telesecreter_Infrastructure.data_access.repositories.repository import GenericRepository
