@@ -1,0 +1,32 @@
+endpoints level 1
+-get doctors,departments,appointments,scheduales
+
+endpoints level 2
+-get by id;users,doctorsdepartments,scheduales,appointments
+
+endpoints level 3
+get by name;users,doctorsdepartments,scheduales,appointments
+
+endpoints level 4
+update;users,doctorsdepartments,scheduales,appointments
+
+endpoint levl 5
+delete;users,doctorsdepartments,scheduales,appointments
+
+webhook;
+-get doctors scheduale webhook
+-book appointment webhook
+-cancel appointment webhook
+
+
+Webhook Adı,Görevi,Neden Önemli?
+search_doctor,Semptom -> Departman -> Doktor (Rating'e göre),"Projenin ""Zekası"""
+check_slots,Seçilen doktorun boş saatlerini getirir,"Projenin ""Fonksiyonu"""
+confirm_booking,Randevuyu Appointments tablosuna INSERT eder,"Projenin ""Bütünlüğü"""
+
+
+gorevler
+-ilk olarak bul endpointlerin nasil calisr iclerinde nevar
+-sora ekle book appointment,reccomend doctor by symphtom
+-sora ekle confirm appointment email
+-sora ekle reschedual appointment
