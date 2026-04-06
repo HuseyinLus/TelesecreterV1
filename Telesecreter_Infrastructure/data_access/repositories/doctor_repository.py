@@ -16,7 +16,7 @@ def _map(row) -> Doctor:
         department_id=row["department_id"],
         specialty=row["specialty"],
         is_available=bool(row["is_available"]),
-        rating=row["rating"],
+        ratings=row["rating"],
     )
 
 
