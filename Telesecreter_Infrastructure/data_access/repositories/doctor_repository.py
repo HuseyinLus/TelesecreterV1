@@ -1,6 +1,6 @@
 from typing import Optional
 from uuid import UUID
-from Telesecreter_Domain.interfaces.i_department_repository import IDoctorRepository
+from Telesecreter_Domain.interfaces.i_doctor_repository import IDoctorRepository
 from Telesecreter_Domain.entities.doctor import Doctor
 from Telesecreter_Infrastructure.data_access.configurations.models.doctor_model import DoctorModel
 from Telesecreter_Infrastructure.data_access.repositories.repository import GenericRepository
