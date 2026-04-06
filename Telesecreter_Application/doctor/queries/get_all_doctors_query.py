@@ -6,6 +6,6 @@ class GetAllDoctorsQuery:
     def __init__(self,doctor_repository: IDoctorRepository):
         self._repository = doctor_repository
 
-    def excecute(self) -> list[DoctorDTO]:
+    def execute(self) -> list[DoctorDTO]:
         doctors = self._repository.get_all()
         return [DoctorDTO.from_entity(doctor) for doctor in doctors]
