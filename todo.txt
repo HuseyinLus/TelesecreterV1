@@ -36,3 +36,85 @@ ne yaptik;
 get all endpointii yazdik herbir entity icin 
 simdi lazim set appointment, recommend doctor yapalim calissin webhookle
 zamana gore diger endpointleri de yazalim
+
+
+You are working inside a production FastAPI + CQRS + SQLite system.
+
+Your task is to implement a "Doctor Search by Name and Department" feature.
+
+IMPORTANT RULES:
+- Do NOT change project structure
+- Do NOT add business logic to API layer
+- Must follow CQRS pattern (API → Query → Repository → SQLite)
+- Reuse existing Doctor entity and DoctorDTO
+- Keep changes minimal and consistent with current architecture
+- Ask for approval before each step (pause after every phase)
+
+FEATURE REQUIREMENT:
+
+Create a search endpoint that allows finding doctors using:
+- doctor_name (partial match allowed)
+- department_name (exact match)
+
+Endpoint:
+POST /api/search-doctor
+
+Input:
+{
+  "doctor_name": "philip",
+  "department_name": "neurology"
+}
+
+Behavior:
+1. Find department by name
+2. Filter doctors by:
+   - department_id
+   - name contains doctor_name (case-insensitive)
+3. Sort by rating DESC
+4. Return list of doctors
+
+Output:
+{
+  "doctors": [
+    {
+      "id": "...",
+      "full_name": "...",
+      "speciality": "...",
+      "rating": 4.9
+    }
+  ],
+  "message": "Doctors found successfully"
+}
+
+ARCHITECTURE REQUIREMENTS:
+
+You must implement using CQRS:
+
+1. DTO layer:
+   - SearchDoctorRequestDTO
+   - SearchDoctorResponseDTO (or reuse DoctorDTO if possible)
+
+2. Query layer:
+   - SearchDoctorQuery
+
+3. Repository layer:
+   - Extend DoctorRepository with:
+     - get_by_name_and_department(name, department_id)
+
+4. API layer:
+   - FastAPI router only calls Query handler
+   - NO business logic inside router
+
+5. Database:
+   - Use existing SQLite schema
+   - Use LIKE query for name search
+
+WORKFLOW:
+- Step 1: Propose design (NO CODE)
+- Step 2: Wait for approval
+- Step 3: Implement DTO + Query
+- Step 4: Implement repository method
+- Step 5: Implement API endpoint
+- Step 6: Final review
+
+STOP AFTER EACH STEP AND ASK FOR APPROVAL.
