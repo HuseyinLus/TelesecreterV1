@@ -6,7 +6,7 @@ from datetime import datetime
 class DoctorDTO:
     id: UUID
     full_name: str
-    speciality: str
+    specialty: str
     phone_number: str
     email: str
     is_available: bool
@@ -18,7 +18,7 @@ class DoctorDTO:
         return DoctorDTO(
             id=doctor.id,
             full_name=doctor.full_name,
-            speciality=doctor.specialty,
+            specialty=doctor.specialty,
             phone_number=doctor.phone_number,
             email=doctor.email,
             is_available=doctor.is_available,

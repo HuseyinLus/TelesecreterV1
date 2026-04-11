@@ -11,7 +11,7 @@ class UserModel(BaseModel):
     phone_number    = Column(String, unique=True, nullable=False)
     email           = Column(String, unique=True, nullable=False)
     hashed_password = Column(String, nullable=False)
-    role            = Column(Enum(UserRole), nullable=False, default=UserRole.PATIENT)
+    role            = Column(Enum(UserRole, values_callable=lambda x: [e.value for e in x]), nullable=False, default=UserRole.PATIENT)
     is_active       = Column(Boolean, default=True, nullable=False)
 
     appointments = relationship("AppointmentModel", back_populates="user")

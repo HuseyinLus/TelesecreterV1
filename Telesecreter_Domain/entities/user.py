@@ -1,4 +1,5 @@
 from uuid import UUID
+from datetime import datetime
 from Telesecreter_Domain.common.base_entity import BaseEntity
 from Telesecreter_Domain.enums.user_role import UserRole
 
@@ -12,8 +13,10 @@ class User(BaseEntity):
         role: UserRole = UserRole.PATIENT,
         is_active: bool = True,
         id: UUID | None = None,
+        created_at: datetime | None = None,
+        updated_at: datetime | None = None,
     ):
-        super().__init__(id)
+        super().__init__(id, created_at, updated_at)
         self.full_name = full_name
         self.phone_number = phone_number
         self.email = email
