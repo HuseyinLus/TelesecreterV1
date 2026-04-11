@@ -30,3 +30,9 @@ gorevler
 -sora ekle book appointment,reccomend doctor by symphtom
 -sora ekle confirm appointment email
 -sora ekle reschedual appointment
+
+
+ne yaptik;
+get all endpointii yazdik herbir entity icin 
+simdi lazim set appointment, recommend doctor yapalim calissin webhookle
+zamana gore diger endpointleri de yazalim

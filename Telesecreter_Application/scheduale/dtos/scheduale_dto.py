@@ -1,14 +1,15 @@
 from dataclasses import dataclass
 from uuid import UUID
-from datetime import datetime
+from datetime import time, datetime
+
 
 @dataclass
 class SchedualeDTO:
     id: UUID
     doctor_id: UUID
-    day_of_week: str
-    start_time: datetime
-    end_time: datetime
+    day_of_week: int
+    start_time: time
+    end_time: time
     created_at: datetime
     updated_at: datetime
 

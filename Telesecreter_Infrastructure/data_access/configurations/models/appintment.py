@@ -12,7 +12,7 @@ class AppointmentModel(BaseModel):
     date = Column(Date, nullable=False)
     start_time = Column(Time, nullable=False)
     end_time = Column(Time, nullable=False)
-    status = Column(Enum(AppointmentStatus), default=AppointmentStatus.PENDING, nullable=False)
+    status = Column(Enum(AppointmentStatus, values_callable=lambda x: [e.value for e in x]), default=AppointmentStatus.PENDING, nullable=False)
     cancelled_at = Column(String, nullable=True)
     cancellation_reason = Column(String, nullable=True)
 

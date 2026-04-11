@@ -9,4 +9,4 @@ router = APIRouter(prefix="/departments", tags=["Departments"])
 
 @router.get("/", response_model=list[department_dto.DepartmentDTO])
 def get_all_departments(repo: IDepartmentRepository = Depends(get_department_repo)):
-    return GetAllDepartmentsQuery(repo).excecute()
+    return GetAllDepartmentsQuery(repo).execute()

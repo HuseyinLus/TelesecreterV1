@@ -7,6 +7,6 @@ class GetAllDepartmentsQuery:
     def __init__(self, department_repository: IDepartmentRepository):
         self._repository = department_repository
 
-    def excecute(self) -> list[DepartmentDTO]:
+    def execute(self) -> list[DepartmentDTO]:
         departments = self._repository.get_all()
         return [DepartmentDTO.from_entity(department) for department in departments]

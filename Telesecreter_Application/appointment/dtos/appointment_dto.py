@@ -1,17 +1,21 @@
 from dataclasses import dataclass
+from typing import Optional
 from uuid import UUID
-from datetime import datetime
+from datetime import date, time, datetime
+
+from Telesecreter_Domain.enums.appointment_status import AppointmentStatus
+
 
 @dataclass
 class AppointmentDTO:
     id: UUID
     user_id: UUID
     doctor_id: UUID
-    date: datetime
-    start_time: datetime
-    end_time: datetime
+    date: date
+    start_time: time
+    end_time: time
     status: str
-    cancelled_at: datetime
+    cancelled_at: Optional[str]
     created_at: datetime
     updated_at: datetime
 
@@ -24,7 +28,7 @@ class AppointmentDTO:
             date=appointment.date,
             start_time=appointment.start_time,
             end_time=appointment.end_time,
-            status=appointment.status,
+            status=appointment.status.value if isinstance(appointment.status, AppointmentStatus) else appointment.status,
             cancelled_at=appointment.cancelled_at,
             created_at=appointment.created_at,
             updated_at=appointment.updated_at,
