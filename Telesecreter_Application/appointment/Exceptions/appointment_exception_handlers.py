@@ -14,3 +14,9 @@ class PastDateError(Exception):
     """Raised when the requested date is before today."""
     def __init__(self):
         super().__init__("Appointment date cannot be before today")
+
+
+class DoctorNotAvailableAtTimeError(Exception):
+    """Raised when the requested time slot is already booked."""
+    def __init__(self):
+        super().__init__("Doctor is not available in the selected time")
