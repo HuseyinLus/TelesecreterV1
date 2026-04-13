@@ -118,3 +118,29 @@ WORKFLOW:
 - Step 6: Final review
 
 STOP AFTER EACH STEP AND ASK FOR APPROVAL.
+
+
+
+simdi bana lazim; Name based search: Userdan bir name gelecek id degil, ben name + department kullanarak doctori bulacim
+MVP icin sadece name bazli arama olacak
+
+
+uygulama mantigi ornek dialog
+-User clls(webhook)
+-ai: hello i am X how can i assist You
+-user; i would like to book an appointment for doctor (Doctor name)
+-ai: can you tell me on what date you want to book the appointment
+-user(on 26 may)
+-ai:check availability(doctor is available on the requesyed date, what time do you want the appointment to be)
+-user(9:30)
+-ai: check availability at specific time(if available) doctor is available on the requested time, do you want to set the appointment
+-user: yes
+-ai(apointment is set)
+-phone hangup(trigger appouintment status CONFIRMED)
+-user message
+
+
+todo; agent olsutr retellde birtene webhook ekle direk backend de configure et, web call yaptiginda webhook calissin lazim, calisirse devam et
+configuration ayarlarina iyi bak yapma yanlis cok detayli kur ajani herbir yaptigini bil, kontrol sende olsun minimum hazir ayar kullan
+workflowuna sadik kal
+task2; webhoklari bol istenilen seye gore 
