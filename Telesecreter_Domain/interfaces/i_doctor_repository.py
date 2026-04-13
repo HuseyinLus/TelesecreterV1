@@ -18,3 +18,7 @@ class IDoctorRepository(IBaseRepository[Doctor]):
     @abstractmethod
     def get_available_doctors(self) -> list[Doctor]:
         raise NotImplementedError
+
+    @abstractmethod
+    def get_by_name(self, name: str) -> list[Doctor]:
+        raise NotImplementedError

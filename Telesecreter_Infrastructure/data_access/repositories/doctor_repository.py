@@ -73,3 +73,8 @@ class DoctorRepository(GenericRepository[Doctor, DoctorModel], IDoctorRepository
         with get_db() as session:
             rows = session.query(DoctorModel).filter(DoctorModel.is_available == True).all()
             return [_map(row) for row in rows]
+
+    def get_by_name(self, name: str) -> list[Doctor]:
+        with get_db() as session:
+            rows = session.query(DoctorModel).filter(DoctorModel.full_name == name).all()
+            return [_map(row) for row in rows]
