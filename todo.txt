@@ -144,3 +144,14 @@ todo; agent olsutr retellde birtene webhook ekle direk backend de configure et, 
 configuration ayarlarina iyi bak yapma yanlis cok detayli kur ajani herbir yaptigini bil, kontrol sende olsun minimum hazir ayar kullan
 workflowuna sadik kal
 task2; webhoklari bol istenilen seye gore 
+
+
+
+check if doctor exist yazildi webhook ile calisir, simdi check availability yazildi true false duner, buna lazim eklensin recommend nearest date if false
+sirada check time slots vardir ayni mantik
+ondan sonra set appointemtn vardir
+no available date hatasini cuz
+
+
+Authentication, OAuth, numarayle kayit olunsun.
+Numarayle ne zaman aranacak otomatik bulacak useri, appointment sucsessful gonderecek mailden

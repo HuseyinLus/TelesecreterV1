@@ -7,19 +7,18 @@ from Telesecreter_Domain.interfaces.i_appointment_repository import IAppointment
 from Telesecreter_Domain.interfaces.i_doctor_repository import IDoctorRepository
 from Telesecreter_Domain.interfaces.i_scheduale_repository import IScheduleRepository
 from Telesecreter_Application.appointment.dtos.appointment_dto import AppointmentDTO
-from Telesecreter_Application.appointment.dtos.availability_dto import DoctorAvailabilityDTO
 from Telesecreter_Application.appointment.dtos.get_appointment_by_doctor_id_dto import GetAppointmentByDoctorIdDTO
 from Telesecreter_Application.appointment.dtos.set_appointment_dto import SetAppointmentRequest, SetAppointmentResponse
 from Telesecreter_Application.appointment.queries.get_all_appointmens_query import GetAllAppointmentsQuery
-from Telesecreter_Application.appointment.queries.check_doctor_availability_query import CheckDoctorAvailabilityQuery
 from Telesecreter_Application.appointment.queries.get_appointment_by_doctor_id_query import GetAppointmentByDoctorIdQuery
+from Telesecreter_Application.appointment.queries.check_slot_availability_query import CheckSlotAvailabilityQuery
 from Telesecreter_Application.appointment.commands.set_appointment_command import SetAppointmentCommand
-from Telesecreter_Application.appointment.Exceptions.appointment_exception_handlers import (
+from Telesecreter_Application.appointment.exceptions.appointment_exception_handlers import (
     DoctorNotAvailableAtTimeError,
     DoctorNotAvailableError,
     DoctorNotFoundError,
-    PastDateError,
 )
+from Telesecreter_Application.doctor.Exceptions.doctor_exception_handlers import InvalidTimeFormatError
 from Telesecreter_API.dependencies.dependency_injection import get_appointment_repo, get_doctor_repo, get_schedule_repo
 
 router = APIRouter(prefix="/appointments", tags=["Appointments"])
@@ -52,6 +51,24 @@ def set_appointment(
         raise HTTPException(status_code=409, detail=str(e))
 
 
+@router.get("/slots/check")
+def check_slot_availability(
+    doctor_id: UUID,
+    date_str: str,
+    requested_time: str,
+    appointment_repo: IAppointmentRepository = Depends(get_appointment_repo),
+):
+    try:
+        is_available = CheckSlotAvailabilityQuery(appointment_repo).execute(
+            doctor_id, date_str, requested_time
+        )
+        return {"is_slot_available": is_available}
+    except InvalidTimeFormatError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
 @router.get("/doctor/{doctor_id}", response_model=list[GetAppointmentByDoctorIdDTO])
 def get_appointments_by_doctor_id(
     doctor_id: UUID,
@@ -63,18 +80,3 @@ def get_appointments_by_doctor_id(
     except DoctorNotFoundError as e:
         raise HTTPException(status_code=404, detail=str(e))
 
-
-@router.get("/availability", response_model=DoctorAvailabilityDTO)
-def check_availability(
-    doctor_id: UUID,
-    date: date,
-    appointment_repo: IAppointmentRepository = Depends(get_appointment_repo),
-    schedule_repo: IScheduleRepository = Depends(get_schedule_repo),
-    doctor_repo: IDoctorRepository = Depends(get_doctor_repo),
-):
-    try:
-        return CheckDoctorAvailabilityQuery(schedule_repo, appointment_repo, doctor_repo).execute(doctor_id, date)
-    except PastDateError as e:
-        raise HTTPException(status_code=400, detail=str(e))
-    except (DoctorNotFoundError, DoctorNotAvailableError) as e:
-        raise HTTPException(status_code=404, detail=str(e))

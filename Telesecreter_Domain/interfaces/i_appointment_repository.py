@@ -1,5 +1,5 @@
 from abc import abstractmethod
-from datetime import date
+from datetime import date, time
 from uuid import UUID
 from Telesecreter_Domain.interfaces.i_base_repository import IBaseRepository
 from Telesecreter_Domain.entities.appointments import Appointment
@@ -22,4 +22,8 @@ class IAppointmentRepository(IBaseRepository[Appointment]):
 
     @abstractmethod
     def get_by_status(self, status: AppointmentStatus) -> list[Appointment]:
+        raise NotImplementedError
+
+    @abstractmethod
+    def exists_by_doctor_date_time(self, doctor_id: UUID, appt_date: date, start_time: time) -> bool:
         raise NotImplementedError

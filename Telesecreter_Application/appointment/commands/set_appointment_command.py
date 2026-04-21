@@ -7,7 +7,7 @@ from Telesecreter_Domain.interfaces.i_appointment_repository import IAppointment
 from Telesecreter_Domain.interfaces.i_doctor_repository import IDoctorRepository
 from Telesecreter_Domain.interfaces.i_scheduale_repository import IScheduleRepository
 from Telesecreter_Application.appointment.dtos.set_appointment_dto import SetAppointmentResponse
-from Telesecreter_Application.appointment.Exceptions.appointment_exception_handlers import (
+from Telesecreter_Application.appointment.exceptions.appointment_exception_handlers import (
     DoctorNotAvailableAtTimeError,
     DoctorNotAvailableError,
     DoctorNotFoundError,

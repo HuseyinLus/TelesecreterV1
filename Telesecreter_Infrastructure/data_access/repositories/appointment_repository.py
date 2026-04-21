@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, time
 from uuid import UUID
 
 from Telesecreter_Domain.interfaces.i_appointment_repository import IAppointmentRepository
@@ -87,3 +87,11 @@ class AppointmentRepository(GenericRepository[Appointment, AppointmentModel], IA
                 AppointmentModel.status == status
             ).all()
             return [_map(row) for row in rows]
+
+    def exists_by_doctor_date_time(self, doctor_id: UUID, appt_date: date, start_time: time) -> bool:
+        with get_db() as session:
+            return session.query(AppointmentModel).filter(
+                AppointmentModel.doctor_id == str(doctor_id),
+                AppointmentModel.date == appt_date,
+                AppointmentModel.start_time == start_time,
+            ).first() is not None

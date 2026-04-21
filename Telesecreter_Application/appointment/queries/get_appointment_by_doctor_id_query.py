@@ -3,7 +3,7 @@ from uuid import UUID
 from Telesecreter_Domain.interfaces.i_appointment_repository import IAppointmentRepository
 from Telesecreter_Domain.interfaces.i_doctor_repository import IDoctorRepository
 from Telesecreter_Application.appointment.dtos.get_appointment_by_doctor_id_dto import GetAppointmentByDoctorIdDTO
-from Telesecreter_Application.appointment.Exceptions.appointment_exception_handlers import DoctorNotFoundError
+from Telesecreter_Application.appointment.exceptions.appointment_exception_handlers import DoctorNotFoundError
 
 
 class GetAppointmentByDoctorIdQuery:
