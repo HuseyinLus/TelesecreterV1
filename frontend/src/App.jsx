@@ -1,9 +1,22 @@
+import { useEffect } from 'react'
+import apiClient from './services/apiClient'
+import { useLogStore } from './store/logStore'
+
 export default function App() {
+  const { logs } = useLogStore()
+
+  useEffect(() => {
+    apiClient.get('/doctors/').catch(() => {})
+  }, [])
+
   return (
-    <div style={{ padding: 24 }}>
-      <p className="text-[var(--color-accent)] font-semibold">Tailwind v4 token test</p>
-      <p className="text-[var(--color-ink-3)] text-xs mt-1">If this text is teal-blue, tokens are working.</p>
-      <div className="mt-4 w-8 h-8 rounded-full bg-[var(--color-sage)] animate-[pulse-sage_2s_infinite]" />
+    <div style={{ padding: 24, fontFamily: 'monospace' }}>
+      <h3>Log entries: {logs.length}</h3>
+      {logs.map((l) => (
+        <div key={l.id} style={{ marginBottom: 8, fontSize: 11 }}>
+          <strong>{l.method}</strong> {l.path} → {l.statusCode} ({l.durationMs}ms)
+        </div>
+      ))}
     </div>
   )
 }
