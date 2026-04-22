@@ -1,22 +1,13 @@
-import { useEffect } from 'react'
-import apiClient from './services/apiClient'
-import { useLogStore } from './store/logStore'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import DashboardPage from './pages/DashboardPage'
+import CalendarPage from './pages/CalendarPage'
 
 export default function App() {
-  const { logs } = useLogStore()
-
-  useEffect(() => {
-    apiClient.get('/doctors/').catch(() => {})
-  }, [])
-
   return (
-    <div style={{ padding: 24, fontFamily: 'monospace' }}>
-      <h3>Log entries: {logs.length}</h3>
-      {logs.map((l) => (
-        <div key={l.id} style={{ marginBottom: 8, fontSize: 11 }}>
-          <strong>{l.method}</strong> {l.path} → {l.statusCode} ({l.durationMs}ms)
-        </div>
-      ))}
-    </div>
+    <Routes>
+      <Route path="/" element={<Navigate to="/dashboard" replace />} />
+      <Route path="/dashboard" element={<DashboardPage />} />
+      <Route path="/calendar"  element={<CalendarPage />} />
+    </Routes>
   )
 }
