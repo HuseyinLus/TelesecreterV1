@@ -3,7 +3,10 @@ import { useDoctors } from '../hooks/useDoctors'
 import { useAppointments } from '../hooks/useAppointments'
 import CalendarToolbar from '../components/calendar/CalendarToolbar'
 import WeekCalendar from '../components/calendar/WeekCalendar'
+import DayView from '../components/calendar/DayView'
+import ListView from '../components/calendar/ListView'
 import DoctorLegend from '../components/calendar/DoctorLegend'
+import AppointmentDrawer from '../components/calendar/AppointmentDrawer'
 
 function getWeekLabel() {
   const now = new Date()
@@ -28,26 +31,16 @@ export default function CalendarPage() {
       <CalendarToolbar
         view={view} onView={setView}
         filters={filters} setFilters={setFilters}
-        doctors={doctors}
-        weekLabel={getWeekLabel()}
+        doctors={doctors} weekLabel={getWeekLabel()}
       />
 
-      {view === 'week' && (
-        <WeekCalendar
-          appointments={appointments}
-          doctors={doctors}
-          filters={filters}
-          selectedId={selected?.id}
-          onSelect={setSelected}
-        />
-      )}
-      {view !== 'week' && (
-        <div style={{ padding: 32, textAlign: 'center', color: 'var(--color-ink-3)', fontSize: 13 }}>
-          {view === 'day' ? 'Day view — Module 13' : 'List view — Module 13'}
-        </div>
-      )}
+      {view === 'week' && <WeekCalendar appointments={appointments} doctors={doctors} filters={filters} selectedId={selected?.id} onSelect={setSelected} />}
+      {view === 'day'  && <DayView     appointments={appointments} doctors={doctors} filters={filters} selectedId={selected?.id} onSelect={setSelected} />}
+      {view === 'list' && <ListView    appointments={appointments} doctors={doctors} filters={filters} selectedId={selected?.id} onSelect={setSelected} />}
 
       <DoctorLegend doctors={doctors} />
+
+      <AppointmentDrawer appt={selected} doctors={doctors} onClose={() => setSelected(null)} />
     </div>
   )
 }
