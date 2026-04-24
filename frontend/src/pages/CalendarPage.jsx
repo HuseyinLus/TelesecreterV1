@@ -29,7 +29,7 @@ function getLabel(view, baseDate) {
 
 export default function CalendarPage() {
   const [view, setView]         = useState('week')
-  const [filters, setFilters]   = useState({ doctorId: 'all' })
+  const [filters]   = useState({ doctorId: 'all' })
   const [selected, setSelected] = useState(null)
   const [baseDate, setBaseDate] = useState(new Date())
 
@@ -55,12 +55,9 @@ export default function CalendarPage() {
       <div style={{ overflow: 'auto', padding: '0 24px 24px' }}>
         <CalendarToolbar
           view={view} onView={handleViewChange}
-          filters={filters} setFilters={setFilters}
-          doctors={doctors}
           label={getLabel(view, baseDate)}
           onPrev={() => navigate(-1)}
           onNext={() => navigate(1)}
-          onToday={() => setBaseDate(new Date())}
         />
 
         {view === 'week' && <WeekCalendar appointments={appointments} doctors={doctors} filters={filters} selectedId={selected?.id} onSelect={setSelected} baseDate={baseDate} />}
