@@ -1,13 +1,11 @@
 import { NavLink } from 'react-router-dom'
-import { LayoutDashboard, Calendar, Stethoscope, Users, Clock, Phone, Settings } from 'lucide-react'
+import { LayoutDashboard, Calendar, Stethoscope, Users, Phone, Settings } from 'lucide-react'
 
 const NAV_ITEMS = [
   { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { to: '/calendar',  label: 'Calendar',  icon: Calendar },
   { to: '/doctors',   label: 'Doctors',   icon: Stethoscope },
   { to: '/patients',  label: 'Patients',  icon: Users },
-  { to: '/slots',     label: 'Availability', icon: Clock },
-  { to: '/calls',     label: 'Call log',  icon: Phone },
 ]
 
 export default function Sidebar() {
