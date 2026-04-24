@@ -4,10 +4,10 @@ import NowIndicator from './NowIndicator'
 
 const WEEK_DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
-function getWeekDates() {
-  const now = new Date()
-  const mon = new Date(now)
-  mon.setDate(now.getDate() - ((now.getDay() + 6) % 7))
+function getWeekDates(baseDate) {
+  const ref = baseDate ?? new Date()
+  const mon = new Date(ref)
+  mon.setDate(ref.getDate() - ((ref.getDay() + 6) % 7))
   return Array.from({ length: 7 }, (_, i) => {
     const d = new Date(mon)
     d.setDate(mon.getDate() + i)
@@ -15,8 +15,8 @@ function getWeekDates() {
   })
 }
 
-export default function WeekCalendar({ appointments, doctors, filters, selectedId, onSelect }) {
-  const weekDates = getWeekDates()
+export default function WeekCalendar({ appointments, doctors, filters, selectedId, onSelect, baseDate }) {
+  const weekDates = getWeekDates(baseDate)
   const todayDate = new Date().toISOString().slice(0, 10)
 
   const doctorById = Object.fromEntries(doctors.map((d, i) => [d.id, { ...d, color: getDoctorColor(i) }]))

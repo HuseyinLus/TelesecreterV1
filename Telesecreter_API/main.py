@@ -1,5 +1,6 @@
 import sys
 import os
+from datetime import date
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -32,6 +33,10 @@ app.include_router(scheduale_controller.router)
 @app.get("/")
 async def root():
     return {"message": "Welcome to the Telesecretary API! Visit /docs for Swagger documentation."}
+
+@app.get("/today")
+async def get_today():
+    return {"date": str(date.today())}
 
 if __name__ == "__main__":
     import uvicorn
