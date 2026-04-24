@@ -1,4 +1,5 @@
 import PulsePanel from '../components/pulse/PulsePanel'
+import RegistryPanel from '../components/registry/RegistryPanel'
 
 export default function DashboardPage() {
   return (
@@ -11,20 +12,8 @@ export default function DashboardPage() {
       gap: 0,
     }}>
       {/* Zone 2 — Registry (left, flex-grow) */}
-      <div style={{
-        gridRow: 1,
-        gridColumn: 1,
-        overflow: 'auto',
-        padding: 24,
-        borderRight: '1px solid var(--color-border)',
-        borderBottom: '1px solid var(--color-border)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: 'var(--color-ink-3)',
-        fontSize: 13,
-      }}>
-        Zone 2 — Registry
+      <div style={{ gridRow: 1, gridColumn: 1, overflow: 'hidden', borderRight: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
+        <RegistryPanel />
       </div>
 
       {/* Zone 1 — Pulse (right rail, 360px) */}
