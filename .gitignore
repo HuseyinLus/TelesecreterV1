@@ -33,6 +33,10 @@ model/data/
 *.csv
 *.tsv
 data/*.json
+data/*.db
+
+# Claude Code
+.claude/
 
 # Model checkpoints
 model/checkpoints/

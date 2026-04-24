@@ -1,16 +1,16 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
-export default function CalendarToolbar({ view, onView, filters, setFilters, doctors, weekLabel }) {
+export default function CalendarToolbar({ view, onView, filters, setFilters, doctors, label, onPrev, onNext, onToday }) {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', padding: '14px 0', gap: 12 }}>
-      {/* Left: week nav */}
+      {/* Left: nav */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 2, background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 9, padding: 2 }}>
-          <button style={{ width: 28, height: 28, display: 'grid', placeItems: 'center', color: 'var(--color-ink-2)', borderRadius: 7, border: 'none', background: 'none', cursor: 'pointer' }}><ChevronLeft size={14} /></button>
-          <button style={{ padding: '5px 12px', fontSize: 12, fontWeight: 500, color: 'var(--color-ink-2)', borderRadius: 7, border: 'none', background: 'none', cursor: 'pointer' }}>Today</button>
-          <button style={{ width: 28, height: 28, display: 'grid', placeItems: 'center', color: 'var(--color-ink-2)', borderRadius: 7, border: 'none', background: 'none', cursor: 'pointer' }}><ChevronRight size={14} /></button>
+          <button onClick={onPrev}  style={{ width: 28, height: 28, display: 'grid', placeItems: 'center', color: 'var(--color-ink-2)', borderRadius: 7, border: 'none', background: 'none', cursor: 'pointer' }}><ChevronLeft size={14} /></button>
+          <button onClick={onToday} style={{ padding: '5px 12px', fontSize: 12, fontWeight: 500, color: 'var(--color-ink-2)', borderRadius: 7, border: 'none', background: 'none', cursor: 'pointer' }}>Today</button>
+          <button onClick={onNext}  style={{ width: 28, height: 28, display: 'grid', placeItems: 'center', color: 'var(--color-ink-2)', borderRadius: 7, border: 'none', background: 'none', cursor: 'pointer' }}><ChevronRight size={14} /></button>
         </div>
-        <span style={{ fontFamily: 'var(--font-serif)', fontSize: 20, color: 'var(--color-ink)', letterSpacing: '-0.005em', whiteSpace: 'nowrap' }}>{weekLabel}</span>
+        <span style={{ fontFamily: 'var(--font-serif)', fontSize: 20, color: 'var(--color-ink)', letterSpacing: '-0.005em', whiteSpace: 'nowrap' }}>{label}</span>
       </div>
 
       {/* Center: doctor filter */}
