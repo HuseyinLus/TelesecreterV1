@@ -1,6 +1,7 @@
 import sys
 import os
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 # Ensure the backend directory is in the Python path so it can import Telesecretary namespace properly
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -12,6 +13,13 @@ app = FastAPI(
     title="Telesecretary API",
     description="Backend API for the Telesecretary application",
     version="1.0.0"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173", "http://localhost:5174"],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Connect all routers
