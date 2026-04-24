@@ -1,5 +1,6 @@
 import PulsePanel from '../components/pulse/PulsePanel'
 import RegistryPanel from '../components/registry/RegistryPanel'
+import LogTracePanel from '../components/logtrace/LogTracePanel'
 
 export default function DashboardPage() {
   return (
@@ -22,19 +23,8 @@ export default function DashboardPage() {
       </div>
 
       {/* Zone 3 — Logic Trace (full width bottom, 256px) */}
-      <div style={{
-        gridRow: 2,
-        gridColumn: '1 / -1',
-        overflow: 'hidden',
-        borderTop: '1px solid var(--color-border)',
-        background: 'var(--color-surface-2)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: 'var(--color-ink-3)',
-        fontSize: 13,
-      }}>
-        Zone 3 — Logic Trace
+      <div style={{ gridRow: 2, gridColumn: '1 / -1', overflow: 'hidden', borderTop: '1px solid var(--color-border)' }}>
+        <LogTracePanel />
       </div>
     </div>
   )
