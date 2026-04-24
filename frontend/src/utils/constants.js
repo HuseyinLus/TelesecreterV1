@@ -11,3 +11,8 @@ export const LOG_MAX_ENTRIES = 200
 export const DOCTOR_COLORS = ['teal', 'sage', 'amber', 'indigo', 'rose']
 
 export const getDoctorColor = (index) => DOCTOR_COLORS[index % DOCTOR_COLORS.length]
+
+export const HOUR_HEIGHT      = 60
+export const GRID_START_HOUR  = 8
+export const GRID_END_HOUR    = 19
+export const GRID_HOURS       = Array.from({ length: GRID_END_HOUR - GRID_START_HOUR }, (_, i) => GRID_START_HOUR + i)
