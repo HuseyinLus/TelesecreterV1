@@ -31,7 +31,9 @@ class CheckSlotAvailabilityQuery:
         raise ValueError(f"Invalid date format: '{date_str}'. Use YYYY-MM-DD or MM.DD")
 
     def _parse_time(self, time_str: str) -> time:
-        try:
-            return datetime.strptime(time_str, "%H:%M").time()
-        except ValueError:
-            raise InvalidTimeFormatError(time_str)
+        for fmt in ("%H:%M", "%H:%M:%S"):
+            try:
+                return datetime.strptime(time_str, fmt).time()
+            except ValueError:
+                continue
+        raise InvalidTimeFormatError(time_str)
