@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends
 from fastapi.responses import JSONResponse
 
 from Telesecreter_Domain.interfaces.i_user_repository import IUserRepository
-from Telesecreter_Domain.exceptions.user_not_found_exception import UserNotFoundException
+from Telesecreter_Application.user.exceptions.user_exception_handlers import UserNotFoundException
 from Telesecreter_Application.user.dtos.user_dto import UserDTO
 from Telesecreter_Application.user.queries.get_all_users_query import GetAllUsersQuery
 from Telesecreter_Application.user.queries.get_user_by_id_query import GetUserByIdQuery

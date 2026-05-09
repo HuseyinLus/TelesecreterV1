@@ -160,4 +160,11 @@ Numarayle ne zaman aranacak otomatik bulacak useri, appointment sucsessful gonde
 module 8 ten devam et
 
 search bar 
-set appointment
+set appointmenti ayarla
+
+
+1.claude yi ac 
+2.vicorn Telesecreter_API.main:app --reload
+3.ngrok http --url=unstimulative-stagnantly-anderson.ngrok-free.dev 8000
+4.frontend-npm run dev
+5.retelle gir

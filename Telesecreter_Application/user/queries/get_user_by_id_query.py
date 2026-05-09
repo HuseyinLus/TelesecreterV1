@@ -1,7 +1,7 @@
 from uuid import UUID
 from Telesecreter_Domain.interfaces.i_user_repository import IUserRepository
 from Telesecreter_Application.user.dtos.user_dto import UserDTO
-from Telesecreter_Domain.exceptions.user_not_found_exception import UserNotFoundException
+from Telesecreter_Application.user.exceptions.user_exception_handlers import UserNotFoundException
 
 
 class GetUserByIdQuery:
