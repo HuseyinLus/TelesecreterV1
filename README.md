@@ -1,6 +1,5 @@
 # AI Telesecretary - Intelligent Call Management Assistant
 
-![AI Telesecretary Banner](https://via.placeholder.com/1200x400?text=AI+Telesecretary+-+Smart+Call+Management)
 
 ## 🤖 Overview
 
@@ -60,7 +59,6 @@ Designed for businesses of all sizes, AI Telesecretary reduces operational overh
 - **Python**: 3.12 or higher
 - **Node.js**: 16.x or higher
 - **PostgreSQL**: 12 or higher
-- **Redis**: 6.0 or higher
 - **Telephony Service**: Retell
 - **Microphone/Speaker**: For voice system testing
 
@@ -79,14 +77,6 @@ Designed for businesses of all sizes, AI Telesecretary reduces operational overh
 - **Call Success Rate**: 95%+ appointment booking completion
 - **Average Response Time**: < 2 seconds
 - **Language Models**: GPT-4 integration for enhanced understanding
-
-
-## 🔐 Security & Privacy
-
-- **Data Encryption**: End-to-end encryption for all communication
-- **GDPR Compliant**: Full compliance with data protection regulations
-- **HIPAA Ready**: Suitable for healthcare applications
-- **PCI DSS**: Payment information handled securely
 
 ## 🙏 Acknowledgments
 
