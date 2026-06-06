@@ -9,8 +9,7 @@ class GetDoctorByNameQuery:
         self._repository = doctor_repository
 
     def execute(self, name: str) -> list[GetDoctorByNameDTO]:
-        normalized = "Dr. " + name.removeprefix("Dr. ").strip()
-        doctors = self._repository.get_by_name(normalized)
+        doctors = self._repository.get_by_name(name.strip())
         if not doctors:
             raise DoctorNotFoundError(f"name='{name}'")
         return [GetDoctorByNameDTO.from_entity(doctor) for doctor in doctors]

@@ -14,7 +14,7 @@ def _map(row: DoctorModel) -> Doctor:
         full_name=row.full_name,
         email=row.email,
         phone_number=row.phone_number or "",
-        department_id=row.department_id,
+        department_id=UUID(row.department_id),
         specialty=row.specialty,
         is_available=row.is_available,
         ratings=row.rating,
@@ -76,5 +76,7 @@ class DoctorRepository(GenericRepository[Doctor, DoctorModel], IDoctorRepository
 
     def get_by_name(self, name: str) -> list[Doctor]:
         with get_db() as session:
-            rows = session.query(DoctorModel).filter(DoctorModel.full_name == name).all()
+            rows = session.query(DoctorModel).filter(
+                DoctorModel.full_name.ilike(f"%{name}%")
+            ).all()
             return [_map(row) for row in rows]

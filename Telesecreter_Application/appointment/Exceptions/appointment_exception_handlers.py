@@ -1,3 +1,8 @@
+class AppointmentNotFoundError(Exception):
+    def __init__(self, appointment_id):
+        super().__init__(f"Appointment with id '{appointment_id}' not found.")
+
+
 class DoctorNotAvailableError(Exception):
     """Raised when the doctor has no schedule on the requested date."""
     def __init__(self):

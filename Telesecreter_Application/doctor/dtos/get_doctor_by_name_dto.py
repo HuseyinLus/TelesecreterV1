@@ -11,6 +11,7 @@ class GetDoctorByNameDTO:
     phone_number: str
     email: str
     is_available: bool
+    department_id: UUID
     created_at: datetime
     updated_at: datetime
 
@@ -23,6 +24,7 @@ class GetDoctorByNameDTO:
             phone_number=doctor.phone_number,
             email=doctor.email,
             is_available=doctor.is_available,
+            department_id=doctor.department_id,
             created_at=doctor.created_at,
             updated_at=doctor.updated_at,
         )
